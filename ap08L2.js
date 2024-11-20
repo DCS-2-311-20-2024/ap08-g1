@@ -95,7 +95,7 @@ export function init(scene, size, id, offset, texture) {
 // コース(自動運転用)
 export function makeCourse(scene) {
     const courseVectors = [];
-    const parts = [L2, L3, L1];
+    const parts = [L2, L3, L4, L1];
     parts.forEach((part) =>{
         part.controlPoints.forEach((p) => {
             courseVectors.push(
