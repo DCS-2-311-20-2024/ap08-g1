@@ -81,7 +81,22 @@ export function init(scene, size, id, offset, texture) {
         bldg.position.set(x,bldgH/2,z);
         scene.add(bldg)
     }
-    makeBuilding(20,20,2);
+    makeBuilding(20,0,2);
+    makeBuilding(70,-70,1);
+   /* makeBuilding(30,30,4);
+    makeBuilding(30,45,4);
+    makeBuilding(30,60,4);
+    makeBuilding(30,75,4);
+    makeBuilding(40,30,4);
+    makeBuilding(50,30,4);
+    makeBuilding(60,30,4);
+    */
+
+    for(let i =30;i<100;i=i+10){
+        for(let ii = 30; ii<80 ; ii=ii+15){
+            makeBuilding(i,ii,4);
+        }
+    }
     // コース(描画)
     //制御てんを補間して曲線を作る。
    course = new THREE.CatmullRomCurve3(
@@ -97,7 +112,7 @@ export function init(scene, size, id, offset, texture) {
     const points = course.getPoints(100);
     points.forEach((point) => {
         const road = new THREE.Mesh(
-            new THREE.CircleGeometry(10,16),
+            new THREE.CircleGeometry(4,16),
             new THREE.MeshLambertMaterial({
                 color: "gray",
             })
@@ -139,7 +154,7 @@ export function getCamera() {
 
 // 車の設定
 export function setCar(scene, car) {
-    const SCALE = 0.2;
+    const SCALE = 0.01;
     car.position.copy(origin);
     car.scale.set(SCALE,SCALE,SCALE);
     scene.add(car);
