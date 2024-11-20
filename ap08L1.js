@@ -50,7 +50,24 @@ export function init(scene, size, id, offset, texture) {
     scene.add(plane);
 
     // ビル
+    function makeBuilding(x,z,type){
+        const height = [2,2,7,4,5];
+        const bldgH = height[type]*5;
+        const geometry = new THREE.BoxGeometry(8,bldgH,8);
+        
 
+        const material = new THREE.MeshLambertMaterial({color: 0x808080});
+        const bldg = new THREE.Mesh(
+            geometry,
+            material
+        )
+      //  const bldg2 = new THREE.Mesh(
+
+       // )
+        bldg.position.set(height,bldgH,0);
+        scene.add(bldg)
+    }
+    makeBuilding(20,20,0);
     // コース(描画)
     //制御てんを補間して曲線を作る。
    course = new THREE.CatmullRomCurve3(
@@ -66,7 +83,7 @@ export function init(scene, size, id, offset, texture) {
     const points = course.getPoints(100);
     points.forEach((point) => {
         const road = new THREE.Mesh(
-            new THREE.CircleGeometry(10,16),
+            new THREE.CircleGeometry(5,16),
             new THREE.MeshLambertMaterial({
                 color: "gray",
             })
@@ -84,7 +101,7 @@ export function init(scene, size, id, offset, texture) {
 // コース(自動運転用)
 export function makeCourse(scene) {
     const courseVectors = [];
-    const parts = [L4,L1,L2,L3];
+    const parts = [L1,L2,L3,L4];
     parts.forEach((part)=>{
         part.controlPoints.forEach((p)=>{
             courseVectors.push(
