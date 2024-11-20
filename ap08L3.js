@@ -74,16 +74,16 @@ export function init(scene, size, id, offset, texture) {
             geometry,
             material
         )
-        bldg.position.set(-40, 12, 40);
+        bldg.position.set(x, bldgH/2 , z);
         scene.add(bldg);
-        const bldg2 = new THREE.Mesh(
-            geometry,
-            material
-        )
-        bldg2.position.set(-55, 12, 20);
-        scene.add(bldg2);
     }
-    makeBuilding(20, 20, 4);
+    makeBuilding(-20, 20, 2);
+    makeBuilding(-60, 20, 1);
+    makeBuilding(-25, 30, 4);
+    makeBuilding(-15, 40, 3);
+    makeBuilding(-25, 40, 2);
+    makeBuilding(-35, 40, 4);
+    makeBuilding(-45, 40, 0);
 
     // コース(描画)
     course = new THREE.CatmullRomCurve3(

@@ -52,15 +52,38 @@ export function init(scene, size, id, offset, texture) {
         const height = [2, 2, 7, 4, 5];
         const bldgH = height[type] * 5;
         const geometry = new THREE.BoxGeometry(8, bldgH, 8);
-        const material = new THREE.MeshLambertMaterial({color: 0x808080});
+        const material = new THREE.MeshLambertMaterial({map: texture});
+        const sideUvS = (type*2+1)/11;
+        const sideUvE = (type*2+2)/11;
+        const topUvS = (type*2+2)/11;
+        const topUvE = (type*2+3)/11;
+        const uvs = geometry.getAttribute("uv");
+        for (let i=0; i<48;i+=4) {
+            if (i<16 || i>22) {
+                uvs.array[i] = sideUvS;
+                uvs.array[i+2] = sideUvE;
+            }
+            else {
+                uvs.array[i] = topUvS;
+                uvs.array[i+2] = topUvE;
+            }
+        }
         const bldg = new THREE.Mesh(
             geometry,
             material
         )
-        bldg.position.set(x, bldgH / 2, z);
+        bldg.position.set(-65, 10, -40);
         scene.add(bldg);
+
+        const bldg2 = new THREE.Mesh(
+            geometry,
+            material
+        )
+        bldg2.position.set(-20, 10, -25);
+        scene.add(bldg2);
     }
-    makeBuilding(40, 20, 0);
+    makeBuilding(20, 20, 3);
+
 
     //コース(描画)
     //制御点を補間して曲線を作る
