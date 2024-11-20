@@ -97,7 +97,7 @@ export function init(scene, size, id, offset, texture) {
     const points = course.getPoints(100);
     points.forEach((point) => {
         const road = new THREE.Mesh(
-            new THREE.CircleGeometry(5,16),
+            new THREE.CircleGeometry(10,16),
             new THREE.MeshLambertMaterial({
                 color: "gray",
             })
