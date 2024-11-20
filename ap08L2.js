@@ -72,18 +72,17 @@ export function init(scene, size, id, offset, texture) {
             geometry,
             material
         )
-        bldg.position.set(-20, 10 / 2, 20);
+        bldg.position.set(-65, 10, -40);
         scene.add(bldg);
 
         const bldg2 = new THREE.Mesh(
             geometry,
             material
         )
-        bldg2.position.set(-20, 5 / 2, 1);
+        bldg2.position.set(-20, 10, -25);
         scene.add(bldg2);
     }
-    makeBuilding(20, 20, 0);
-    makeBuilding(-10, 10, 2);
+    makeBuilding(20, 20, 3);
 
 
     //コース(描画)
