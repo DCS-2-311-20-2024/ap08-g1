@@ -18,10 +18,10 @@ let camera;
 let course;
 export const origin = new THREE.Vector3();
 export const controlPoints = [
-    [25, 40],
-    [7, 7],
-    [-20, 20],
-    [-50, -20]
+    [50, -20],
+    [5, 0],
+    [-5, 20],
+    [-25, 40]
 ]
 export function init(scene, size, id, offset, texture) {
     origin.set(offset.x, 0, offset.z);
@@ -95,7 +95,7 @@ export function init(scene, size, id, offset, texture) {
 // コース(自動運転用)
 export function makeCourse(scene) {
     const courseVectors = [];
-    const parts = [L2, L3, L1];
+    const parts = [L2, L3, L4, L1];
     parts.forEach((part) =>{
         part.controlPoints.forEach((p) => {
             courseVectors.push(
